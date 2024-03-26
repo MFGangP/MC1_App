@@ -32,7 +32,7 @@ struct ContentView: View {
         .init(photoname: "japancity", cityname: "JAPAN"),
         .init(photoname: "chinacity", cityname: "CHINA"),
     ]
-    
+    // 홈 화면이 먼저 뜨게하기 위한 변수
     @State private var selection = 0
     
     var body: some View {
@@ -71,7 +71,7 @@ struct ContentView: View {
                                     
                                 }
                             }
-                        
+                            
                         }// Hstack 끝 지점
                     }// Vstack 끝 지점
                 }//ForEach 끝 지점
