@@ -56,32 +56,32 @@ struct ContentView: View {
                                 Button(){
                                     
                                 }label: {
+                                    // ZStack을 사용해서 이미지랑 텍스트를 분리하고 각자 설정이 가능하게 수정함
                                     ZStack{
-                                        Text(photo.cityname)
-                                            .font(.system(size: 60)) // 폰트 크기 조금 더 줄이기
-                                            .fontWeight(.bold) // 글자 굵기
-                                            .foregroundColor(Color.white) // 글자 색
-                                            .padding(50) // 택스트 사이 여유 공간
                                         Image(photo.photoname)
                                             .resizable() // 이미지 비율 조절
                                             .frame(width: 350, height: 160) // 이미지 프레임 크기
                                             .cornerRadius(20) // 이미지 곡률
+                                        Text(photo.cityname)
+                                            .font(.system(size: 40)) // 폰트 크기 조금 더 줄이기
+                                            .fontWeight(.semibold) // 글자 굵기
+                                            .foregroundColor(Color.white) // 글자 색
+                                            .padding(50) // 택스트 사이 여유 공간
                                     }
                                     
-                                        }
                                 }
-                                //                                Button(){
-                                //                                     
-                                //                                }label: {
-                                //                                    Image(photo.photoname)
-                                //                                        .resizable() // 이미지 비율 조절
-                                //                                        .frame(width: 160, height: 160) // 이미지 프레임 크기
-                                //                                        .cornerRadius(20) // 이미지 곡률
-                                //                                }
-                            }// Hstack 끝 지점
-                        }// Vstack 끝 지점
-                    }//ForEach 끝 지점
-                }
+                            }
+                            //                                Button(){
+                            //                                     
+                            //                                }label: {
+                            //                                    Image(photo.photoname)
+                            //                                        .resizable() // 이미지 비율 조절
+                            //                                        .frame(width: 160, height: 160) // 이미지 프레임 크기
+                            //                                        .cornerRadius(20) // 이미지 곡률
+                            //                                }
+                        }// Hstack 끝 지점
+                    }// Vstack 끝 지점
+                }//ForEach 끝 지점
             }
             .tabItem {
                 Image(systemName: "fork.knife")
@@ -102,17 +102,17 @@ struct ContentView: View {
                                 Button(){
                                     
                                 }label: {
-                                    Text(photo.cityname)
-                                        .font(.system(size: 60))
-                                        .fontWeight(.bold)
-                                        .foregroundColor(Color.white)
-                                        .padding(50)
-                                        .background{
-                                            Image(photo.photoname)
-                                                .resizable() // 이미지 비율 조절
-                                                .frame(width: 350, height: 160) // 이미지 프레임 크기
-                                                .cornerRadius(20) // 이미지 곡률
-                                        }
+                                    ZStack{
+                                        Image(photo.photoname)
+                                            .resizable() // 이미지 비율 조절
+                                            .frame(width: 350, height: 160) // 이미지 프레임 크기
+                                            .cornerRadius(20) // 이미지 곡률
+                                        Text(photo.cityname)
+                                            .font(.system(size: 40)) // 폰트 크기 조금 더 줄이기
+                                            .fontWeight(.semibold) // 글자 굵기
+                                            .foregroundColor(Color.white) // 글자 색
+                                            .padding(50) // 택스트 사이 여유 공간
+                                    }
                                 }
                             }
                         }
@@ -132,20 +132,20 @@ struct ContentView: View {
                     Button(){
                         
                     }label: {
-                        Text("주변 탐색")
-                            .font(.system(size: 40))
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-                            .padding(50)
-                            .background{
-                                Image("map")
-                                    .resizable() // 이미지 비율 조절
-                                    .frame(width: 350, height: 160) // 이미지 프레임 크기
-                                    .cornerRadius(20) // 이미지 곡률
-                                Image(systemName: "scope")
-                                    .padding(.bottom)
-                                    .frame(width: 60, height: 60) // 이미지 프레임 크기
-                            }
+                        ZStack{
+                            Image("map")
+                                .padding(.leading)
+                                .frame(width: 350, height: 160) // 이미지 프레임 크기
+                                .cornerRadius(20) // 이미지 곡률
+                            Image(systemName: "scope")
+                                .padding(.bottom)
+                                .frame(width: 60, height: 60) // 이미지 프레임 크기
+                            Text("주변 탐색")
+                                .font(.system(size: 40))
+                                .fontWeight(.bold)
+                                .foregroundColor(Color.white)
+                                .padding(50)
+                        }
                     }
                 }
             }
@@ -182,6 +182,7 @@ struct ContentView: View {
         }
     }
 }
+
 
 #Preview(){
     ContentView()
