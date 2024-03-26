@@ -68,7 +68,6 @@ struct ContentView: View {
                                             .foregroundColor(Color.white) // 글자 색
                                             .padding(50) // 택스트 사이 여유 공간
                                     }
-                                    
                                 }
                             }
                         
