@@ -71,14 +71,7 @@ struct ContentView: View {
                                     
                                 }
                             }
-                            //                                Button(){
-                            //                                     
-                            //                                }label: {
-                            //                                    Image(photo.photoname)
-                            //                                        .resizable() // 이미지 비율 조절
-                            //                                        .frame(width: 160, height: 160) // 이미지 프레임 크기
-                            //                                        .cornerRadius(20) // 이미지 곡률
-                            //                                }
+                        
                         }// Hstack 끝 지점
                     }// Vstack 끝 지점
                 }//ForEach 끝 지점
@@ -129,22 +122,108 @@ struct ContentView: View {
                     .font(.largeTitle)
                     .padding()
                 ScrollView {
-                    Button(){
+                    VStack{
+                        Button(){
+                            
+                        }label: {
+                            ZStack{
+                                Image("map")
+                                    .frame(width: 350, height: 70) // 이미지 프레임 크기
+                                    .cornerRadius(10) // 이미지 곡률
+                                    .opacity(0.80)
+                                //                            Image(systemName: "scope")
+                                //                                .frame(width: 60, height: 60) // 이미지 프레임 크기
+                                //                                .padding(.bottom)
+                                Text("내 주변 탐색")
+                                    .font(.system(size: 40))
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(Color.white)
+                            }
+                        }
                         
-                    }label: {
-                        ZStack{
-                            Image("map")
-                                .padding(.leading)
-                                .frame(width: 350, height: 160) // 이미지 프레임 크기
-                                .cornerRadius(20) // 이미지 곡률
-                            Image(systemName: "scope")
-                                .padding(.bottom)
-                                .frame(width: 60, height: 60) // 이미지 프레임 크기
-                            Text("주변 탐색")
-                                .font(.system(size: 40))
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.white)
-                                .padding(50)
+                        Button(){
+                            
+                        }label: {
+                            ZStack{
+                                Image("")
+                                    .frame(width: 350, height: 200) // 이미지 프레임 크기
+                                    .background(.gray)
+                                    .cornerRadius(10) // 이미지 곡률
+                                    .opacity(0.1)
+                                VStack{
+                                    Text("국내 게시판")
+                                        .frame(width: 350, height: 40) // 이미지 프레임 크기
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(Color.black)
+                                        .padding(.trailing, 220)
+                                    Button{
+                                        
+                                    }label :{
+                                        Image("")
+                                            .frame(width: 350, height: 40) // 이미지 프레임 크기
+                                            .background(.gray)
+                                            .opacity(0.1)
+                                    }
+                                    Button{
+                                        
+                                    }label :{
+                                        Image("")
+                                            .frame(width: 350, height: 40) // 이미지 프레임 크기
+                                            .background(.gray)
+                                            .opacity(0.1)
+                                    }
+                                    Button{
+                                        
+                                    }label :{
+                                        Image("")
+                                            .frame(width: 350, height: 40) // 이미지 프레임 크기
+                                            .background(.gray)
+                                            .opacity(0.1)
+                                    }
+                                }
+                            }
+                        }
+                        Button(){
+                            
+                        }label: {
+                            ZStack{
+                                Image("")
+                                    .frame(width: 350, height: 200) // 이미지 프레임 크기
+                                    .background(.gray)
+                                    .cornerRadius(10) // 이미지 곡률
+                                    .opacity(0.1)
+                                VStack{
+                                    Text("해외 게시판")
+                                        .frame(width: 350, height: 40) // 이미지 프레임 크기
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(Color.black)
+                                        .padding(.trailing, 220)
+                                    Button{
+                                        
+                                    }label :{
+                                        Image("")
+                                            .frame(width: 350, height: 40) // 이미지 프레임 크기
+                                            .background(.gray)
+                                            .opacity(0.1)
+                                    }
+                                    Button{
+                                        
+                                    }label :{
+                                        Image("")
+                                            .frame(width: 350, height: 40) // 이미지 프레임 크기
+                                            .background(.gray)
+                                            .opacity(0.1)
+                                    }
+                                    Button{
+                                        
+                                    }label :{
+                                        Image("")
+                                            .frame(width: 350, height: 40) // 이미지 프레임 크기
+                                            .background(.gray)
+                                            .opacity(0.1)
+                                    }
+                                }
+                            }
                         }
                     }
                 }
