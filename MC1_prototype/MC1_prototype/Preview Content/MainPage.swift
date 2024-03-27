@@ -13,6 +13,16 @@ struct ContentView: View {
         let photoname: String
         let cityname: String
     }
+    // 게시물 구조체 선언
+    struct Post{
+        let writerArea : String
+        let writerName : String
+        let postNum : Int
+        let postTitle : String
+        let postMainText : String
+        let postTime : Date
+        let postHash : String
+    }
     // 국내 사진 및 지역이름 리스트
     @State private var photoList: [Photo] = [
         .init(photoname: "seoulcity", cityname: "SEOUL"),
@@ -32,8 +42,26 @@ struct ContentView: View {
         .init(photoname: "japancity", cityname: "JAPAN"),
         .init(photoname: "chinacity", cityname: "CHINA"),
     ]
+    // 게시글 리스트
+    @State private var postlist: [Post] = [
+        .init(writerArea: "국내", writerName: "갱", postNum: 0, postTitle: "부산역 밥 친구 구합니다", postMainText: "부산역에서 스시 같이 드실 분 구합니다", postTime: Date(), postHash: "#부산 #부산역 #스시"),
+        .init(writerArea: "국내", writerName: "갱", postNum: 1, postTitle: "양산역 밥 친구 구합니다", postMainText: "양산역에서 스시 같이 드실 분 구합니다", postTime: Date(), postHash: "#양산 #양산역 #스시"),
+        .init(writerArea: "국내", writerName: "갱", postNum: 2, postTitle: "화정역 밥 친구 구합니다", postMainText: "화정역에서 스시 같이 드실 분 구합니다", postTime: Date(), postHash: "#김해 #화정역 #스시"),
+        .init(writerArea: "국내", writerName: "갱", postNum: 3, postTitle: "물금역 밥 친구 구합니다", postMainText: "물금역에서 스시 같이 드실 분 구합니다", postTime: Date(), postHash: "#양산 #물금역 #스시"),
+        .init(writerArea: "국내", writerName: "갱", postNum: 4, postTitle: "동래역 밥 친구 구합니다", postMainText: "동래역에서 스시 같이 드실 분 구합니다", postTime: Date(), postHash: "#부산 #동래역 #스시")
+    ]
+    @State private var overseapostlist: [Post] = [
+        .init(writerArea: "해외", writerName: "갱", postNum: 0, postTitle: "시부야 밥 친구 구합니다", postMainText: "시부야역에서 스시 같이 드실 분 구합니다", postTime: Date(), postHash: "#도쿄 #시부야 #스시"),
+        .init(writerArea: "해외", writerName: "갱", postNum: 1, postTitle: "오다이바 밥 친구 구합니다", postMainText: "오다이바역에서 스시 같이 드실 분 구합니다", postTime: Date(), postHash: "#도쿄 #오다이바 #스시"),
+        .init(writerArea: "해외", writerName: "갱", postNum: 2, postTitle: "하라주쿠 밥 친구 구합니다", postMainText: "하라주쿠역에서 스시 같이 드실 분 구합니다", postTime: Date(), postHash: "#도쿄 #하라주쿠 #스시"),
+        .init(writerArea: "해외", writerName: "갱", postNum: 3, postTitle: "오사카 밥 친구 구합니다", postMainText: "오사카역에서 스시 같이 드실 분 구합니다", postTime: Date(), postHash: "#오사카 #오사카역 #스시"),
+        .init(writerArea: "해외", writerName: "갱", postNum: 4, postTitle: "아키하바라 밥 친구 구합니다", postMainText: "아키하바라역에서 스시 같이 드실 분 구합니다", postTime: Date(), postHash: "#도쿄 #아키하바라 #스시")
+    ]
+    
     // 홈 화면이 먼저 뜨게하기 위한 변수
     @State private var selection = 0
+    // 게시글 3개만 뽑아내기 위한 변수
+    @State private var postselection = 0
     
     var body: some View {
         // 탭 뷰로 전체 화면을 꾸밈
@@ -68,9 +96,10 @@ struct ContentView: View {
                                             .foregroundColor(Color.white) // 글자 색
                                             .padding(50) // 택스트 사이 여유 공간
                                     }
+                                    
                                 }
                             }
-                        
+                            
                         }// Hstack 끝 지점
                     }// Vstack 끝 지점
                 }//ForEach 끝 지점
@@ -139,10 +168,6 @@ struct ContentView: View {
                                     .foregroundColor(Color.white)
                             }
                         }
-                        
-                        Button(){
-                            
-                        }label: {
                             ZStack{
                                 Image("")
                                     .frame(width: 350, height: 200) // 이미지 프레임 크기
@@ -155,71 +180,51 @@ struct ContentView: View {
                                         .fontWeight(.semibold)
                                         .foregroundColor(Color.black)
                                         .padding(.trailing, 220)
-                                    Button{
-                                        
-                                    }label :{
-                                        Image("")
-                                            .frame(width: 350, height: 40) // 이미지 프레임 크기
-                                            .background(.gray)
-                                            .opacity(0.1)
-                                    }
-                                    Button{
-                                        
-                                    }label :{
-                                        Image("")
-                                            .frame(width: 350, height: 40) // 이미지 프레임 크기
-                                            .background(.gray)
-                                            .opacity(0.1)
-                                    }
-                                    Button{
-                                        
-                                    }label :{
-                                        Image("")
-                                            .frame(width: 350, height: 40) // 이미지 프레임 크기
-                                            .background(.gray)
-                                            .opacity(0.1)
+                                    ForEach(0..<min(3, postlist.count), id: \.self) { index in
+                                        // 리스트에 직접 reversed()를 붙여야 역순으로 불러옴
+                                        let post = postlist.reversed()[index]
+                                        Button {
+                                            
+                                        } label: {
+                                            ZStack {
+                                                Image("")
+                                                    .frame(width: 350, height: 40) // 이미지 프레임 크기
+                                                    .background(Color.gray.opacity(0.05))
+                                                Text(post.postTitle)
+                                                    .foregroundColor(.mint)
+                                        }
                                     }
                                 }
                             }
                         }
-                        Button(){
-                            
-                        }label: {
-                            ZStack{
-                                Image("")
-                                    .frame(width: 350, height: 200) // 이미지 프레임 크기
-                                    .background(.gray)
-                                    .cornerRadius(10) // 이미지 곡률
-                                    .opacity(0.1)
-                                VStack{
-                                    Text("해외 게시판")
-                                        .frame(width: 350, height: 40) // 이미지 프레임 크기
-                                        .fontWeight(.semibold)
-                                        .foregroundColor(Color.black)
-                                        .padding(.trailing, 220)
-                                    Button{
+                        ZStack{
+                            Image("")
+                                .frame(width: 350, height: 200) // 이미지 프레임 크기
+                                .background(.gray)
+                                .cornerRadius(10) // 이미지 곡률
+                                .opacity(0.1)
+                            VStack{
+                                Text("해외 게시판")
+                                    .frame(width: 350, height: 40) // 이미지 프레임 크기
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(Color.black)
+                                    .padding(.trailing, 220)
+                                // ForEach 돌면서 리스트
+                                // 복잡하게 생각 할 필요 없이 아래에서 정의 해주면 간단함.
+                                
+                                ForEach(0..<min(3, overseapostlist.count), id: \.self) { index in
+                                    // 리스트에 직접 reversed()를 붙여야 역순으로 불러옴
+                                    let post = overseapostlist.reversed()[index]
+                                    Button {
                                         
-                                    }label :{
-                                        Image("")
-                                            .frame(width: 350, height: 40) // 이미지 프레임 크기
-                                            .background(.gray)
-                                            .opacity(0.1)
-                                    }
-                                    Button{
-                                        
-                                    }label :{
-                                        Image("")
-                                            .frame(width: 350, height: 40) // 이미지 프레임 크기
-                                            .background(.gray)
-                                            .opacity(0.1)
-                                    }
-                                    Button{
-                                        
-                                    }label :{
-                                        Image("")
-                                            .frame(width: 350, height: 40) // 이미지 프레임 크기
-                                            .background(.gray)
-                                            .opacity(0.1)
+                                    } label: {
+                                        ZStack {
+                                            Image("")
+                                                .frame(width: 350, height: 40) // 이미지 프레임 크기
+                                                .background(Color.gray.opacity(0.05))
+                                            Text(post.postTitle)
+                                                .foregroundColor(.teal)
+                                        }
                                     }
                                 }
                             }
