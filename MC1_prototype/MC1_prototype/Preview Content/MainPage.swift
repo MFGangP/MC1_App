@@ -68,9 +68,11 @@ struct ContentView: View {
     ]
     // 사용자 리스트
     @State private var chatlist: [Chat] = [
-        .init(opponent: "햄스터", opponentDialogue: "그 날 여행가는 시간이 맞는거 같은데 같이 밥 한끼 하실래요?", mySelf: "갱", mySelfDialogue: ""),
-        .init(opponent: "", opponentDialogue: "", mySelf: "", mySelfDialogue: "")
-    
+        .init(opponent: "햄스터", opponentDialogue: "그 날 여행가는 시간이 맞는거 같은데 같이 밥 한 끼 하실래요?", mySelf: "갱", mySelfDialogue: ""),
+        .init(opponent: "구피", opponentDialogue: "같이 밥 한 끼 하실래요?", mySelf: "갱", mySelfDialogue: ""),
+        .init(opponent: "도라에몽", opponentDialogue: "어디로든 문 있는데 밥 한 끼 하실래요?", mySelf: "갱", mySelfDialogue: ""),
+        .init(opponent: "진구", opponentDialogue: "밥 한 끼 하실래요", mySelf: "갱", mySelfDialogue: ""),
+        .init(opponent: "스폰지밥", opponentDialogue: "월요일 좋아", mySelf: "갱", mySelfDialogue: "")
     ]
     
     // 채팅으로 넘어가는
@@ -173,9 +175,6 @@ struct ContentView: View {
                                     .frame(width: 350, height: 70) // 이미지 프레임 크기
                                     .cornerRadius(10) // 이미지 곡률
                                     .opacity(0.80)
-                                //                            Image(systemName: "scope")
-                                //                                .frame(width: 60, height: 60) // 이미지 프레임 크기
-                                //                                .padding(.bottom)
                                 Text("내 주변 탐색")
                                     .font(.system(size: 40))
                                     .fontWeight(.semibold)
@@ -190,7 +189,7 @@ struct ContentView: View {
                                     .opacity(0.1)
                                 VStack{
                                     HStack{
-                                        Text("국내 게시판")
+                                        Text("국내 게시글")
                                             .frame(width: 78, height: 40) // 이미지 프레임 크기
                                             .fontWeight(.semibold)
                                             .foregroundColor(Color.black)
@@ -206,7 +205,7 @@ struct ContentView: View {
                                             ZStack {
                                                 Image("")
                                                     .frame(width: 350, height: 40) // 이미지 프레임 크기
-                                                    .background(Color.gray.opacity(0.05))
+                                                    //.background(Color.gray.opacity(0.05))
                                                 Text(post.postTitle)
                                                     .foregroundColor(.mint)
                                         }
@@ -222,14 +221,13 @@ struct ContentView: View {
                                 .opacity(0.1)
                             VStack{
                                 HStack{
-                                    Text("해외 게시판")
+                                    Text("해외 게시글")
                                         .frame(width: 78, height: 40) // 이미지 프레임 크기
                                         .fontWeight(.semibold)
                                         .foregroundColor(Color.black)
                                     Image(systemName: "arrowshape.turn.up.right.fill")
                                         .padding(.trailing, 220)
                                 }
-                                
                                 // ForEach 돌면서 리스트
                                 // 복잡하게 생각 할 필요 없이 아래에서 정의 해주면 간단함.
                                 ForEach(0..<min(3, overseapostlist.count), id: \.self) { index in
@@ -241,7 +239,7 @@ struct ContentView: View {
                                         ZStack {
                                             Image("")
                                                 .frame(width: 350, height: 40) // 이미지 프레임 크기
-                                                .background(Color.gray.opacity(0.05))
+                                                //.background(Color.gray.opacity(0.05))
                                             Text(post.postTitle)
                                                 .foregroundColor(.teal)
                                         }
@@ -273,7 +271,6 @@ struct ContentView: View {
                             .cornerRadius(20)
                             .padding(.trailing, 250)
                         VStack{
-                            Text("")
                         }
                     }
                 }
