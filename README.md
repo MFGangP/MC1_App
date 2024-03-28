@@ -20,3 +20,5 @@
 - 홈 페이지 게시판 리스트 최신 데이터 불러오기 완성
 - ForEach 문 사용해보기
 - list.reversed(), reverse() 중 reversed(0)가 빠르다는 점을 알게 됌
+
+<img src = "https://github.com/MFGangP/MC1_App/blob/main/Mar-27-2024%2020-19-54.gif?raw=true">
